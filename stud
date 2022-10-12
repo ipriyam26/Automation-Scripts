@@ -1,0 +1,30 @@
+#!/bin/bash
+data=$(ifconfig en0 | awk '/status:/{print $2}')
+con=$(/Sy*/L*/Priv*/Apple8*/V*/C*/R*/airport -I | awk '/ SSID:/ {print $2}')
+if [[ $data == "active" ]]&&[[ $con == "STUD" ]];
+then
+res=$(nc -z -G 3 www.google.com 80  &> /dev/null && echo "Online" || echo "Offline")
+if [[ $res == "Online" ]]; then
+    echo "Online";
+else
+    echo "Offline"
+    echo "Connecting to server...."
+    curl 'http://10.40.0.1/24online/servlet/E24onlineHTTPClient' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+  -H 'Accept-Language: en-IN,en-GB;q=0.9,en;q=0.8,en-US;q=0.7' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Cookie: _RoomNo=""; _Pass=""; _UserName=""' \
+  -H 'DNT: 1' \
+  -H 'Origin: http://10.40.0.1' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: http://10.40.0.1/24online/webpages/client.jsp' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.37' \
+  --data-raw 'mode=191&isAccessDenied=null&url=http%3A%2F%2Fcloudflareportal.com%3A80%2Ftest&message=&regusingpinid=&checkClose=1&sessionTimeout=0&guestmsgreq=false&logintype=2&orgSessionTimeout=0&chrome=-1&alerttime=null&timeout=0&popupalert=0&dtold=0&mac=50%3A2f%3Aa8%3A7e%3A4b%3Ad1&servername=10.40.0.1&temptype=&selfregpageid=&leave=no&macaddress=50%3A2f%3Aa8%3A7e%3A4b%3Ad1&ipaddress=10.12.6.249&profilegroupid=1&profileName=bennette&username=e20cse479%40bennett.edu.in&password=V2HGym%401&loginotp=false&logincaptcha=false&registeruserotp=false&registercaptcha=false' \
+  --compressed \
+  --insecure &> /dev/null
+echo "Connected";
+fi
+fi
