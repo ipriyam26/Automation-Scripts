@@ -1,0 +1,26 @@
+#! /bin/bash
+
+xcrun simctl delete unavailable
+
+cd  ~/Library/Developer/CoreSimulator/Caches/dyld
+
+for f in *; do rm -rf $f;done
+
+cd ~
+
+cd ~/Library/Developer/Xcode/DerivedData
+
+for f in *; do rm -rf $f;done
+
+cd ~
+
+cd ~/Library/Developer/Xcode/iOS\ Device\ Logs
+
+
+for f in *; do rm -rf $f;done
+cd ~
+
+cd ~/Library/Caches/
+
+for f in *; do rm -rf $f;done
+cd ~
