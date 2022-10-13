@@ -1,0 +1,3 @@
+#! /bin/bash
+/Users/ipriyam26/Programing/mp3_on_any_page/venv/bin/python3 /Users/ipriyam26/Programing/mp3_on_any_page/main.py $1
+echo "Downloaded Your Book"
